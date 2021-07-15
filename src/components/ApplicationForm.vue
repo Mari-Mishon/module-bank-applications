@@ -7,6 +7,13 @@
       type="number"
       placeholder="Номер телефона"
     />
+     <input
+     v-model="application.state"
+      type="text"
+      placeholder="Статус"
+    />
+
+
     <button @click="createApplication" class="btn">Отправить новую заявку</button>
   </form>
 </template>
@@ -23,6 +30,7 @@ export default {
   },
   methods: {
     createApplication() {
+    this.application.id = Date.now();
     this.$emit('create', this.application)
     this.application = {
         client_name: "",
@@ -31,6 +39,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style scoped>
@@ -43,15 +52,6 @@ input {
   width: 100%;
   padding: 10px 15px;
   margin-top: 15px;
-  border: 1px solid gray;
-}
-
-.btn {
-  margin-top: 15px;
-  align-self: flex-end;
-  padding: 10px 15px;
-  background: none;
-  color: gray;
   border: 1px solid gray;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3>Список клиентов</h3>
-    <application
+    <h3>Текущая Заявка</h3>
+    <current-application
       v-for="application in applications"
       :key="application.id"
       :application="application"
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Application from './Application.vue';
+import CurrentApplication from './CurrentApplication.vue';
 
 export default {
-  components: { Application},
+  components: {CurrentApplication },
   props: {
     applications: {
       type: Array,

@@ -11,18 +11,25 @@
           application.dadd.split("T")[1].split(".")[0]
         }}
       </div>
+      <div><strong>Номер профиля:</strong> {{ application.profile_id }}</div>
       <div>
         <strong>Статус:</strong> <mark>{{ application.state }} </mark>
       </div>
+      <div><strong>Последние изменения:</strong> {{ application.lastUpd }}</div>
       <div><strong>Продукт:</strong> {{ application.stg.join(", npm") }}</div>
       <div><strong>ИНН:</strong> {{ application.inn }}</div>
-      <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
+      <div><strong>Имя компании:</strong> {{ application.company_name }}</div>
       <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div>
+      <div>
+        <strong>Форма собственности:</strong> {{ application.company_type }}
+      </div>
+      <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
+      <div>
+        <strong>Электронная почта:</strong> {{ application.person_email }}
+      </div>
+      <!-- <div><strong>Дополнительные контакты:</strong> {{ application.extra }}</div> -->
+      <div><strong>Название CRM:</strong> {{ application.extra.crm_source_type }}</div>
     </div>
-
-    <button @click="$router.push(`/applications/${application.id}`)">
-      Открыть
-    </button>
   </div>
 </template>
 

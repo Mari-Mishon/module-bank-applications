@@ -1,7 +1,7 @@
 <template>
   <div class="application">
     <div>
-      <div><strong>id:</strong> {{ application.id }}</div>
+      <!-- <div><strong>id:</strong> {{ application.id }}</div>
       <div><strong>Номер:</strong> {{ application.num }}</div>
       <div>
         <strong>Дата:</strong>
@@ -15,9 +15,9 @@
         <strong>Статус:</strong> <mark>{{ application.state }} </mark>
       </div>
       <div><strong>Продукт:</strong> {{ application.stg.join(", npm") }}</div>
-      <div><strong>ИНН:</strong> {{ application.inn }}</div>
+      <div><strong>ИНН:</strong> {{ application.inn }}</div> -->
       <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
-      <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div>
+      <!-- <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div> -->
     </div>
 
     <button @click="$router.push(`/applications/${application.id}`)">

@@ -2,7 +2,7 @@
   <div>
     <h3>Список клиентов</h3>
     <application
-      v-for="application in applications"
+      v-for="application in $store.getters.getAllApplications"
       :key="application.id"
       :application="application"
     />

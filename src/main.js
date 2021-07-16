@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import App from './App'
 
-import Main from '@/pages/Main';
 import ApplicationsPage from '@/pages/ApplicationsPage';
 import Accounts from '@/pages/Accounts';
 import CurrentApplicationPage from '@/pages/CurrentApplicationPage';
-import axios from "axios";
+import ApplicationForm from '@/pages/ApplicationForm';
 
+import axios from "axios";
+import store from "./store"
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
@@ -16,18 +17,25 @@ axios.defaults.baseURL = `https://my-json-server.typicode.com/plushevy/demo`
 const routes = [
   {
     path: '/',
-    component: Main
-  },
-  {
-    path: '/applications',
+    name:'main_page',
     component: ApplicationsPage
   },
+
+  {
+    path: '/new_application',
+    name: 'new_application',
+    component: ApplicationForm
+  },
+ 
   {
     path: '/accounts',
+    name: 'accounts',
     component: Accounts
   },
+
   {
     path: '/applications/:id',
+    name: 'current_application',
     component: CurrentApplicationPage
   },
 ]
@@ -41,6 +49,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  // store,
+  store,
   render: h => h(App)
 }).$mount('#app')

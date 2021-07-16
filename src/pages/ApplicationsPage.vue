@@ -1,43 +1,40 @@
 <template>
   <div>
     <h1>Заявки</h1>
-    <application-form @create = "createApplication" />
-    <application-list :applications="applications" /> 
+    <application-list :applications="applications" />
+    <div @create="createApplication"></div>
   </div>
 </template>
 
 <script>
 import ApplicationList from "@/components/ApplicationList";
-import ApplicationForm from "@/components/ApplicationForm";
-
-import axios from "axios";
+import { mapGetters } from 'vuex';
 
 export default {
-  components: { ApplicationList, ApplicationForm },
+  components: { ApplicationList },
   data() {
     return {
       applications: [],
     };
   },
 
-  methods: {
-    createApplication(application){
-        this.applications.push(application)
-    },
-
-    async addClients() {
-      try {
-        const responce = await axios.get("/list");
-        this.applications = responce.data;
-      } catch (e) {
-        alert("Error");
-      }
-    },
+  mounted() {
+    
+    if (this.getAllApplications.length === 0) {
+      this.$store.dispatch("fetchApplications")
+    };
+  },
+  computed: {
+    ...mapGetters([
+      'getAllApplications'
+    ])
   },
 
-  mounted(){
-    this.addClients();
-  }
+  methods: {
+    createApplication(application) {
+      this.applications.push(application);
+    },
+  },
 };
 </script>
 

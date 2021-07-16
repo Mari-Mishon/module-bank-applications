@@ -4,6 +4,9 @@
     <div v-if="application">
       <current-application :application="application" />
     </div>
+    <div v-else-if="!application">
+     <h4 style="margin-top:10px">Идет загрузка...</h4>
+    </div>
   </div>
 </template>
 
@@ -19,6 +22,11 @@ export default {
       application: null,
     };
   },
+  
+  mounted() {
+    this.getApplication();
+  },
+  
   methods: {
     async getApplication() {
       try {
@@ -30,9 +38,6 @@ export default {
     },
   },
 
-  mounted() {
-    this.getApplication();
-  },
 };
 </script>
 

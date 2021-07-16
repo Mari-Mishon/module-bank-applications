@@ -1,10 +1,22 @@
 <template>
   <div class="navbar">
-    <div @click="$router.push('/')">Главная</div>
     <div class="navbar_btns">
-      <button @click="$router.push('/applications')">Заявки</button>
+      <button v-if="$route.path === '/accounts'" @click="$router.push('/applications/:id')">
+        Заявка № {{ $route.params.id }}
+      </button>
+     
+
+      <button @click="$router.push('/')" style="margin-left: 15px">
+        Заявки
+      </button>
       <button @click="$router.push('/accounts')" style="margin-left: 15px">
         Счета
+      </button>
+      <button
+        @click="$router.push('/new_application')"
+        style="margin-left: 15px"
+      >
+        Создать новую заявку
       </button>
     </div>
   </div>

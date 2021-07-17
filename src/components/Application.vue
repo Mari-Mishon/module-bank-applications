@@ -3,14 +3,10 @@
     <div>
       <div><strong>id:</strong> {{ application.id }}</div>
       <div><strong>Номер заявки:</strong> {{ application.num }}</div>
-      <!-- <div>
+      <div>
         <strong>Дата:</strong>
-        {{
-          application.dadd.split("T")[0].split("-").reverse().join(".") +
-          " в " +
-          application.dadd.split("T")[1].split(".")[0]
-        }}
-      </div> -->
+        {{ formatDatetime(application.dadd) }}
+      </div>
       <div>
         <strong>Статус:</strong> <mark>{{ application.state }} </mark>
       </div>
@@ -24,6 +20,8 @@
 </template>
 
 <script>
+import datetime from "../mixins/datetime";
+
 export default {
   props: {
     application: {
@@ -31,7 +29,7 @@ export default {
       required: true,
     },
   },
-
+  mixins: [datetime],
   methods: {
     openApplication() {
       this.$store.dispatch("addOpenApplication", {

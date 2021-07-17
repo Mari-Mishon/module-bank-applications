@@ -2,7 +2,7 @@ import axios from "axios";
 export default {
     state: {
         applications: [],
-        openedApplications: []
+        openedApplications: [],
     },
     mutations: {
         setApplications(state, applications) {
@@ -13,7 +13,9 @@ export default {
             this.applications = state.applications.push(application)
         },
         setOpenApplicationId(state, applicationId) {
-            this.openedApplications = state.openedApplications.push(applicationId)
+            if (!state.openedApplications.includes(applicationId)) {
+                this.openedApplications = state.openedApplications.push(applicationId)
+            }
         }
     },
     getters: {

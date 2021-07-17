@@ -1,10 +1,13 @@
 <template>
   <div class="navbar">
     <div class="navbar_btns">
-      <button v-if="$route.path === '/accounts'" @click="$router.push('/applications/:id')">
-        Заявка № {{ $route.params.id }}
+      <button
+        v-for="openedApplication in getOpenedApplications"
+        :key="openedApplication"
+        @click="$router.push(`/applications/${openedApplication}`)"
+      >
+        Заявка № {{ openedApplication }}
       </button>
-     
 
       <button @click="$router.push('/')" style="margin-left: 15px">
         Заявки
@@ -23,6 +26,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters(["getOpenedApplications"]),
+  },
+};
 </script>
 
 <style>

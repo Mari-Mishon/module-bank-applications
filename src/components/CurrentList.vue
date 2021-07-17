@@ -2,7 +2,7 @@
   <div>
     <h3>Текущая Заявка</h3>
     <current-application
-      v-for="application in applications"
+      v-for="application in $store.getters.getAllApplications"
       :key="application.id"
       :application="application"
     />

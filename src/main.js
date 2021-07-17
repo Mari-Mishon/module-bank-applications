@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 
 import ApplicationsPage from '@/pages/ApplicationsPage';
-import Accounts from '@/pages/Accounts';
+import AccountsPage from '@/pages/AccountsPage';
 import CurrentApplicationPage from '@/pages/CurrentApplicationPage';
 import ApplicationForm from '@/pages/ApplicationForm';
 
@@ -30,7 +30,7 @@ const routes = [
   {
     path: '/accounts',
     name: 'accounts',
-    component: Accounts
+    component: AccountsPage
   },
 
   {

@@ -19,7 +19,6 @@ export default {
   },
 
   mounted() {
-    
     if (this.getAllApplications.length === 0) {
       this.$store.dispatch("fetchApplications")
     };

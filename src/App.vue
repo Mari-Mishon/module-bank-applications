@@ -1,22 +1,32 @@
 <template>
-  <div class="app">
-    <navbar></navbar>
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <navbar/>
+      
+    </v-app-bar>
+
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
+import Navbar from './components/Navbar.vue';
+
 export default {
+  name: 'App',
+
   components: {
     Navbar,
   },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-</style>

@@ -9,6 +9,7 @@ import ApplicationForm from '@/pages/ApplicationForm';
 import axios from "axios";
 import store from "./store"
 import VueRouter from 'vue-router';
+import vuetify from './plugins/vuetify'
 
 Vue.use(VueRouter);
 axios.defaults.baseURL = `https://my-json-server.typicode.com/plushevy/demo`
@@ -49,6 +50,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  store, 
+  store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')

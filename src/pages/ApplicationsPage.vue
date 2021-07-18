@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Заявки</h1>
     <application-list :applications="applications" />
     <div @create="createApplication"></div>
   </div>

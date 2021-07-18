@@ -3,27 +3,26 @@
     <div>
       <div><strong>Город:</strong> {{ account.client_city }}</div>
       <div><strong>ФИО клиента:</strong> {{ account.client_name }}</div>
-      <!-- <div>
-        <strong>Дата:</strong>
-        {{
-          application.dadd.split("T")[0].split("-").reverse().join(".") +
-          " в " +
-          application.dadd.split("T")[1].split(".")[0]
-        }}
-      </div> -->
-      <div>
-        <strong>Статус:</strong> <mark>{{ account.meeting_state }} </mark>
-      </div>
-      <!-- <div><strong>Продукт:</strong> {{ application.stg.join(", npm") }}</div> -->
       <div><strong>Банк:</strong> {{ account.bank_name }}</div>
-      <div><strong>Место встречи:</strong> {{ account.meeting_place }}</div>
-      <div><strong>Номер телефона:</strong>{{ account.person_phone }}</div>
-    </div>
+      <div><strong>Продукт:</strong> {{ account.stg.join(", ") }}</div>
+      <div>
+        <strong>Статус: </strong>
+        <span :class="getStatusClass">{{ account.meeting_state }} </span>
+      </div>
+      <div>
+        <strong>Дата:</strong>
+        {{ formatDatetime(account.dadd) }}
+      </div>
 
+      <div><strong>Место встречи:</strong> {{ account.meeting_place }}</div>
+      <div><strong>Номер телефона: </strong>{{ account.person_phone }}</div>
+    </div>
   </div>
 </template>
 
 <script>
+import datetime from "@/mixins/datetime";
+
 export default {
   props: {
     account: {
@@ -31,13 +30,41 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      colors: {
+        error: "error-status",
+        process: "process-status",
+        upload_docs: "upload-status",
+        reupload_fls: "reupload-status",
+      },
+    };
+  },
+  mixins: [datetime],
+
+  computed: {
+    getStatusClass() {
+      return this.colors[this.account.meeting_state];
+    },
+  },
 };
 </script>
 
 <style scoped>
-.account {
-  padding: 10px;
-  border: 2px solid gray;
-  margin-top: 20px;
+.error-status {
+  color: red;
+  font-weight: 600;
+}
+.process-status {
+  color: green;
+  font-weight: 600;
+}
+.upload-status {
+  color: blue;
+  font-weight: 600;
+}
+.reupload-status {
+  color: aqua;
+  font-weight: 600;
 }
 </style>

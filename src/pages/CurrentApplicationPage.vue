@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <div>
     <div v-if="application">
       <current-application :application="application" />
@@ -7,6 +8,7 @@
       <h4 style="margin-top: 10px">Идет загрузка...</h4>
     </div>
   </div>
+</v-app>
 </template>
 
 <script>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Cчета</h1>
     <accounts-list :accounts="accounts" />
   </div>
 </template>

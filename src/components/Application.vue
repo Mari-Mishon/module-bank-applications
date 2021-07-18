@@ -1,22 +1,20 @@
 <template>
-  <div class="application">
-    <div>
-      <div><strong>id:</strong> {{ application.id }}</div>
-      <div><strong>Номер заявки:</strong> {{ application.num }}</div>
-      <div>
-        <strong>Дата:</strong>
-        {{ formatDatetime(application.dadd) }}
-      </div>
-      <div>
-        <strong>Статус:</strong> <mark>{{ application.state }} </mark>
-      </div>
-      <!-- <div><strong>Продукт:</strong> {{ application.stg.join(", npm") }}</div> -->
-      <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
-      <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div>
-    </div>
+  <v-container fluid>
+    <div><strong>Номер заявки:</strong> {{ application.num }}</div>
+    <div><strong>Продукт:</strong> {{ application.stg.join(", ") }}</div>
 
-    <button @click="openApplication">Открыть</button>
-  </div>
+    <div>
+      <strong>Дата:</strong>
+      {{ formatDatetime(application.dadd) }}
+    </div>
+    <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
+    <div><strong>Статус:</strong> <span :class="getStatusClass">{{ application.state }}</span></div>
+    <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div>
+
+    <v-card-actions class="card-actions">
+      <v-btn color="orange" text @click="openApplication">Открыть</v-btn>
+    </v-card-actions>
+  </v-container>
 </template>
 
 <script>
@@ -27,6 +25,18 @@ export default {
     application: {
       type: Object,
       required: true,
+    },
+  },
+    data() {
+    return{
+      colors: {
+        init:"init-status",
+      },
+    };
+  },
+  computed: {
+      getStatusClass() {
+      return this.colors[this.application.state];
     },
   },
   mixins: [datetime],
@@ -43,9 +53,12 @@ export default {
 </script>
 
 <style scoped>
-.application {
-  padding: 10px;
-  border: 2px solid gray;
-  margin-top: 20px;
+.init-status {
+  color: orange;
+  font-weight: 600;
+}
+.card-actions {
+  position: absolute;
+  bottom: 0;
 }
 </style>

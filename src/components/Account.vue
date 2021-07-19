@@ -1,23 +1,22 @@
 <template>
-  <div class="account">
+  <v-container fluid>
+    <div><strong>Город:</strong> {{ account.client_city }}</div>
+    <div><strong>ФИО клиента:</strong> {{ account.client_name }}</div>
+    <div><strong>Банк:</strong> {{ account.bank_name }}</div>
+    <div><strong>Продукт:</strong> {{ account.stg.join(", ") }}</div>
     <div>
-      <div><strong>Город:</strong> {{ account.client_city }}</div>
-      <div><strong>ФИО клиента:</strong> {{ account.client_name }}</div>
-      <div><strong>Банк:</strong> {{ account.bank_name }}</div>
-      <div><strong>Продукт:</strong> {{ account.stg.join(", ") }}</div>
-      <div>
-        <strong>Статус: </strong>
-        <span :class="getStatusClass">{{ account.meeting_state }} </span>
-      </div>
-      <div>
-        <strong>Дата:</strong>
-        {{ formatDatetime(account.dadd) }}
-      </div>
-
-      <div><strong>Место встречи:</strong> {{ account.meeting_place }}</div>
-      <div><strong>Номер телефона: </strong>{{ account.person_phone }}</div>
+      <strong>Статус: </strong>
+      <span :class="getStatusClass">{{ account.meeting_state }} </span>
     </div>
-  </div>
+    <div>
+      <strong>Дата:</strong>
+      {{ formatDatetime(account.dadd) }}
+    </div>
+
+    <div><strong>Место встречи:</strong> {{ account.meeting_place }}</div>
+    <div><strong>Номер телефона: </strong>{{ account.person_phone }}</div>
+
+  </v-container>
 </template>
 
 <script>

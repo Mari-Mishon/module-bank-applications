@@ -7,12 +7,13 @@
       <strong>Дата:</strong>
       {{ formatDatetime(application.dadd) }}
     </div>
-    <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
+    <div><strong>Клиент:</strong> {{ application.client_name }}</div>
     <div><strong>Статус:</strong> <span :class="getStatusClass">{{ application.state }}</span></div>
     <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div>
 
     <v-card-actions class="card-actions">
       <v-btn color="orange" text @click="openApplication">Открыть</v-btn>
+       <v-btn color="orange" text @click="editApplication">Редактировать</v-btn>
     </v-card-actions>
   </v-container>
 </template>
@@ -47,6 +48,10 @@ export default {
       });
 
       this.$router.push(`/applications/${this.application.id}`);
+    },
+
+    editApplication() {
+      this.$router.push(`/applications/edit/${this.application.id}`);
     },
   },
 };

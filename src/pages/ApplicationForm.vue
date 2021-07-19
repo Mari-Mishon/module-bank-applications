@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <v-card class="ma-10">
     <v-card-title
       class="headline font-weight-bold justify-center"
       v-text="`Создание заявки`"
@@ -26,16 +27,72 @@
       <v-text-field
         solo
         clearable
+        v-model="application.company_name"
+        placeholder="Название компании"
+      ></v-text-field>
+
+      <v-select
+        :items="types"
+        solo
+        clearable
+        v-model="application.company_type"
+        placeholder="Тип компании"
+      ></v-select>
+
+      <v-text-field
+        solo
+        clearable
         v-model="application.client_name"
         type="text"
         placeholder="ФИО"
       />
+
       <v-text-field
         solo
         clearable
         v-model="application.person_phone"
         type="number"
         placeholder="Номер телефона"
+      />
+
+      <v-text-field
+        solo
+        clearable
+        v-model="application.person_email"
+        type="email"
+        placeholder="Электронная почта"
+      />
+
+      <v-text-field
+        solo
+        clearable
+        v-model="application.extra.partner.client_name"
+        type="text"
+        placeholder="ФИО партнера"
+      />
+
+      <v-text-field
+        solo
+        clearable
+        v-model="application.extra.partner.inn"
+        type="text"
+        placeholder="ИНН"
+      />
+
+      <v-text-field
+        solo
+        clearable
+        v-model="application.extra.partner.ogrn"
+        type="text"
+        placeholder="ОГРН"
+      />
+
+      <v-text-field
+        solo
+        clearable
+        v-model="application.extra.crm_source_type"
+        type="text"
+        placeholder="Тип CRM"
       />
 
       <input
@@ -50,25 +107,43 @@
         </v-btn>
       </v-card-actions>
     </form>
+    </v-card>
   </v-app>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import { uuid } from "vue-uuid";
+
 export default {
   data() {
     return {
       stgs: ["ACCOPEN", "FNS.REG"],
-
+      types: ["IP", "UL"],
       application: {
-        id: "",
-        num: "",
+        id: this.$store.getters['getLastId']+1,
+        num: this.$store.getters['getLastNum']+1,
         dadd: "",
+        profile_id: uuid.v4().toUpperCase(),
+        lastUpd: new Date().toISOString(),
+        stg: [],
         state: "init",
-        stg: "",
-        inn: "",
-        client_name: "",
+        inn: null,
+        company_name: null,
         person_phone: "",
+        company_type: "",
+        client_name:"",
+        person_email: null,
+        extra: {
+          partner: {
+            type: "partner",
+            user_id: uuid.v4().toUpperCase(),
+            client_name:"",
+            inn: null,
+            ogrn: null,
+          },
+          crm_source_type: "",
+        },
       },
     };
   },

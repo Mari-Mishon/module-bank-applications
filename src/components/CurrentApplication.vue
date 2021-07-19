@@ -31,7 +31,7 @@
         <div>
           <strong>Форма собственности:</strong> {{ application.company_type }}
         </div>
-        <div><strong>ФИО клиента:</strong> {{ application.client_name }}</div>
+        <div><strong>Клиент:</strong> {{ application.person_fullname }}</div>
         <div>
           <strong>Электронная почта:</strong> {{ application.person_email }}
         </div>

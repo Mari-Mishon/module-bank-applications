@@ -1,22 +1,21 @@
 <template>
-<v-app>
-      <v-container fluid>
-        <v-row no-gutters>
-          <v-col
-            v-for="account in $store.getters.getAllAccounts"
-            :key="account.id"
-            :cols="account.flex"
-          >
-            <v-card class="ma-2 pa-2" height="100%">
+  <v-app>
+    <v-container fluid>
+      <v-row>
+        <v-col
+          v-for="account in $store.getters.getAllAccounts"
+          :key="account.id"
+        >
+          <v-card class="card-outter ma-2" height="100%">
+            <v-card-text class="text--primary">
               <v-card-title v-text="`Счет № ` + account.num"></v-card-title>
-              <v-card-text class="text--primary">
-                <account :account="account" />
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-</v-app>
+              <account :account="account" />
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -34,4 +33,8 @@ export default {
 </script>
 
 <style scoped>
+.card-outter {
+  position: relative;
+  padding-bottom: 50px;
+}
 </style>

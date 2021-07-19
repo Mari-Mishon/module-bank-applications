@@ -25,8 +25,6 @@ export default {
         getApplicationById(state) {
             return (id) => {
                 return state.applications.find((application) => {
-                    console.log(application)
-                    console.log(id)
                     return Number(application.id) === Number(id)
                 }
                 )

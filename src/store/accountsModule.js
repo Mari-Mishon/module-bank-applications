@@ -8,11 +8,11 @@ export default {
             state.accounts = payload
         },
     },
+
     getters: {
         getAllAccounts(state) {
             return state.accounts
         },
-
     },
 
     actions: {
@@ -21,6 +21,7 @@ export default {
                 axios.get("/meetings")
                     .then(response => context.commit("setAccounts", response.data));
             } catch (e) {
+                // FIX: Maybe console.log?
                 alert("Error");
             }
         },

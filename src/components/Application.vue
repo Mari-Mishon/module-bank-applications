@@ -1,19 +1,33 @@
 <template>
   <v-container fluid>
-    <div><strong>Номер заявки:</strong> {{ application.num }}</div>
-    <div><strong>Продукт:</strong> {{ application.stg.join(", ") }}</div>
+    <div><strong>Номер заявки: </strong> {{ application.num }}</div>
+    <div><strong>Продукт: </strong> {{ application.stg.join(", ") }}</div>
 
     <div>
-      <strong>Дата:</strong>
+      <strong>Дата: </strong>
       {{ formatDatetime(application.dadd) }}
     </div>
-    <div><strong>Клиент:</strong> {{ application.client_name }}</div>
-    <div><strong>Статус:</strong> <span :class="getStatusClass">{{ application.state }}</span></div>
-    <div><strong>Номер телефона:</strong>{{ application.person_phone }}</div>
+    <div><strong>Клиент: </strong> {{ application.client_name }}</div>
+    <div>
+      <strong>Статус: </strong>
+      <span :class="getStatusClass">{{ application.state }}</span>
+    </div>
+    <div><strong>Телефон: </strong>{{ application.person_phone }}</div>
 
     <v-card-actions class="card-actions">
-      <v-btn color="orange" text @click="openApplication">Открыть</v-btn>
-       <v-btn color="orange" text @click="editApplication">Редактировать</v-btn>
+      <v-btn
+        color="indigo accent-2"
+        text
+        @click="openApplication"
+        >Открыть</v-btn
+      >
+      <v-btn
+        color="indigo accent-1
+"
+        text
+        @click="editApplication"
+        >Изменить</v-btn
+      >
     </v-card-actions>
   </v-container>
 </template>
@@ -28,15 +42,15 @@ export default {
       required: true,
     },
   },
-    data() {
-    return{
+  data() {
+    return {
       colors: {
-        init:"init-status",
+        init: "init-status",
       },
     };
   },
   computed: {
-      getStatusClass() {
+    getStatusClass() {
       return this.colors[this.application.state];
     },
   },
@@ -65,5 +79,6 @@ export default {
 .card-actions {
   position: absolute;
   bottom: 0;
+  left: 0;
 }
 </style>

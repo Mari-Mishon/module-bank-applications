@@ -5,10 +5,13 @@
         <v-col
           v-for="account in $store.getters.getAllAccounts"
           :key="account.id"
+          :account="account"
+          cols="12"
+          sm="3"
         >
-          <v-card class="card-outter ma-2" height="100%">
+          <v-card class="ma-3 pa-3" height="100%">
+            <v-card-title v-text="`Счет № ` + account.num"></v-card-title>
             <v-card-text class="text--primary">
-              <v-card-title v-text="`Счет № ` + account.num"></v-card-title>
               <account :account="account" />
             </v-card-text>
           </v-card>
@@ -31,10 +34,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.card-outter {
-  position: relative;
-  padding-bottom: 50px;
-}
-</style>

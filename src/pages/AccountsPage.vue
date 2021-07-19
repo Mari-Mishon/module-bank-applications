@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-app>
     <accounts-list :accounts="accounts" />
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -20,6 +20,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

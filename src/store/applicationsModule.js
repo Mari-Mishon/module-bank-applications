@@ -1,10 +1,18 @@
 import axios from "axios";
+import dayjs from "dayjs";
 export default {
     state: {
         applications: [],
         openedApplications: [],
     },
     mutations: {
+        updateApplication(state, updatedApplication) {
+            let applicationIndex = state.applications.indexOf((application) => {
+                return Number(application.id) === Number(updatedApplication.id)
+            })
+            state.applications[applicationIndex] = updatedApplication;
+        },
+
         setApplications(state, applications) {
             state.applications = applications
         },
@@ -45,18 +53,28 @@ export default {
         fetchApplications(context) {
             try {
                 axios.get("/list")
-                    .then(response => context.commit("setApplications", response.data));
+                    .then((response) => {
+                        response.data.forEach((obj) => {
+                            obj.dadd = dayjs(obj.dadd).format("YYYY-MM-DD[T]HH:mm")
+                            obj.id = Number(obj.id)
+                        }
+                        )
+                        return response.data;
+                    })
+                    .then(data => context.commit("setApplications", data));
             } catch (e) {
                 alert("Error");
             }
         },
-
         addNewApplication(context, payload) {
             context.commit("setNewApplication", payload.application);
 
         },
         addOpenApplication(context, payload) {
             context.commit("setOpenApplicationId", payload.applicationId)
+        },
+        updateApplication(context, payload) {
+            context.commit("updateApplication", payload.application)
         }
     },
 }

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <v-app>
     <application-list :applications="applications" />
     <div @create="createApplication"></div>
-  </div>
+  </v-app>
 </template>
 
 <script>

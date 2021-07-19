@@ -6,6 +6,8 @@
           v-for="application in $store.getters.getAllApplications"
           :key="application.id"
           :application="application"
+          cols="12"
+          sm="3"
         >
           <v-card class="card-outter ma-2" height="100%">
             <v-card-text class="text--primary">

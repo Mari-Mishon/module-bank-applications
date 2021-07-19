@@ -5,7 +5,7 @@
       <current-application :application="application" />
     </div>
     <div v-else-if="!application">
-      <h4 style="margin-top: 10px">Идет загрузка...</h4>
+      <h4 class="mt-10">Идет загрузка...</h4>
     </div>
   </div>
 </v-app>
@@ -51,6 +51,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

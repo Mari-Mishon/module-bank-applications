@@ -1,6 +1,9 @@
 module.exports = {
   transpileDependencies: [
     'vuetify'
-  ]
-  // Fix: prepare for deploy
+  ],
+
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/module-bank-applications/'
+    : '/'
 }

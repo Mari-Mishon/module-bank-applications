@@ -11,6 +11,11 @@ import NotFound from '@/components/NotFound';
 
 Vue.use(VueRouter);
 
+const basePath = process.env.NODE_ENV === 'production'
+  ? '/module-bank-applications/'
+  : '/'
+
+
 const routes = [
   {
     path: '/',
@@ -56,4 +61,5 @@ const routes = [
 export default new VueRouter({
   routes,
   mode: "history",
+  base: basePath
 })

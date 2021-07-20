@@ -1,14 +1,14 @@
 <template>
-<v-app>
-  <div>
-    <div v-if="application">
-      <current-application :application="application" />
+  <v-app>
+    <div>
+      <div v-if="application">
+        <current-application :application="application" />
+      </div>
+      <div v-else-if="!application">
+        <h4 class="mt-10">Идет загрузка...</h4>
+      </div>
     </div>
-    <div v-else-if="!application">
-      <h4 class="mt-10">Идет загрузка...</h4>
-    </div>
-  </div>
-</v-app>
+  </v-app>
 </template>
 
 <script>
@@ -46,7 +46,10 @@ export default {
             }
           }
         )
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          console.log(e);
+          this.$router.push("/404");
+        });
     },
   },
 };

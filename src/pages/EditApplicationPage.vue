@@ -16,9 +16,13 @@ export default {
     };
   },
   mounted() {
-    this.application = this.$store.getters.getApplicationById(
-      this.$route.params.id
-    );
+    if (this.$store.getters.getAllApplications.length === 0) {
+      this.$router.push("/");
+    } else {
+      this.application = this.$store.getters.getApplicationById(
+        this.$route.params.id
+      );
+    }
   },
 };
 </script>

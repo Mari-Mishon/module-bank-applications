@@ -39,10 +39,14 @@ export default {
             };
         },
         getLastId(state) {
-            return Number(state.applications.slice().sort((a, b) => b.id - a.id)[0].id);
+            return state.applications.reduce((prev, current) => {
+                return (prev.id > current.id) ? prev : current
+            }, []).id
         },
         getLastNum(state) {
-            return state.applications.slice().sort((a, b) => b.num - a.num)[0].num;
+            return state.applications.reduce((prev, current) => {
+                return (prev.num > current.num) ? prev : current
+            }, []).num
         },
         getOpenedApplications(state) {
             return state.openedApplications;

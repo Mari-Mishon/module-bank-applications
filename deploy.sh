@@ -6,6 +6,9 @@ npm run build
 
 cd dist
 
+# Github pages hack
+cp index.html 404.html
+
 git init
 git add -A
 git commit -m 'deploy'

@@ -10,7 +10,11 @@ import ApplicationForm from "@/components/ApplicationForm";
 
 export default {
   components: { ApplicationForm },
-
+  mounted() {
+    if (this.$store.getters.getAllApplications.length === 0) {
+      this.$router.push("/")
+    };
+  },
 };
 </script>
 

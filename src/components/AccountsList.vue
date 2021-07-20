@@ -25,12 +25,6 @@
 import Account from "@/components/Account.vue";
 
 export default {
-  components: { Account },
-  props: {
-    accounts: {
-      type: Array,
-      required: true,
-    },
-  },
+  components: { Account }
 };
 </script>

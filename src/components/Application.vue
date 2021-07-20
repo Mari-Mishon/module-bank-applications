@@ -10,7 +10,7 @@
     <div><strong>Клиент: </strong> {{ application.client_name }}</div>
     <div>
       <strong>Статус: </strong>
-      <span :class="getStatusClass">{{ application.state }}</span>
+      <span :class="getStatusClass">{{ states[application.state] }}</span>
     </div>
     <div><strong>Телефон: </strong>{{ application.person_phone }}</div>
 
@@ -34,7 +34,7 @@
 
 <script>
 import datetime from "../mixins/datetime";
-
+import {STATES} from "@/constants";
 export default {
   props: {
     application: {
@@ -47,6 +47,8 @@ export default {
       colors: {
         init: "init-status",
       },
+            states: STATES,
+
     };
   },
   computed: {

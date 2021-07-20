@@ -7,10 +7,10 @@ export default {
     },
     mutations: {
         updateApplication(state, updatedApplication) {
-            let applicationIndex = state.applications.indexOf((application) => {
+            let application = state.applications.find((application) => {
                 return Number(application.id) === Number(updatedApplication.id)
             })
-            state.applications[applicationIndex] = updatedApplication;
+            Object.assign(application, updatedApplication);
         },
 
         setApplications(state, applications) {
@@ -63,7 +63,7 @@ export default {
                     })
                     .then(data => context.commit("setApplications", data));
             } catch (e) {
-                alert("Error");
+                console.log(e);;
             }
         },
         addNewApplication(context, payload) {

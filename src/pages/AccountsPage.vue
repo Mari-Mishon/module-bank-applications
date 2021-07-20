@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <accounts-list :accounts="accounts" />
+    <accounts-list />
   </v-app>
 </template>
 
@@ -8,12 +8,6 @@
 import AccountsList from "@/components/AccountsList";
 export default {
   components: { AccountsList },
-
-  data() {
-    return {
-      accounts: [],
-    };
-  },
 
   mounted() {
     this.$store.dispatch("fetchAccounts");

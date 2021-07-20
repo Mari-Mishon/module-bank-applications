@@ -21,8 +21,7 @@ export default {
                 axios.get("/meetings")
                     .then(response => context.commit("setAccounts", response.data));
             } catch (e) {
-                // FIX: Maybe console.log?
-                alert("Error");
+                console.log(e);
             }
         },
     },

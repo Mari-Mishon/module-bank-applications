@@ -28,12 +28,6 @@ import Application from "./Application.vue";
 
 export default {
   components: { Application },
-  props: {
-    applications: {
-      type: Array,
-      required: true,
-    },
-  },
 };
 </script>
 

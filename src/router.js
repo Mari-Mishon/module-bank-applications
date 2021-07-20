@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import ApplicationsPage from '@/pages/ApplicationsPage';
 import AccountsPage from '@/pages/AccountsPage';
 import CurrentApplicationPage from '@/pages/CurrentApplicationPage';
-import ApplicationForm from '@/pages/ApplicationForm';
+import ApplicationFormPage from '@/pages/ApplicationFormPage';
 import EditApplicationPage from '@/pages/EditApplicationPage';
 import NotFound from '@/components/NotFound';
 
@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/new_application',
     name: 'new_application',
-    component: ApplicationForm
+    component: ApplicationFormPage
   },
 
   {

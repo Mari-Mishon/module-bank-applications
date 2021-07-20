@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <application-list :applications="applications" />
-    <div @create="createApplication"></div>
+    <application-list />
   </v-app>
 </template>
 
@@ -11,11 +10,6 @@ import { mapGetters } from 'vuex';
 
 export default {
   components: { ApplicationList },
-  data() {
-    return {
-      applications: [],
-    };
-  },
 
   mounted() {
     if (this.getAllApplications.length === 0) {
@@ -26,12 +20,6 @@ export default {
     ...mapGetters([
       'getAllApplications'
     ])
-  },
-
-  methods: {
-    createApplication(application) {
-      this.applications.push(application);
-    },
   },
 };
 </script>

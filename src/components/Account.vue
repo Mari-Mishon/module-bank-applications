@@ -5,9 +5,8 @@
     <div><strong>Банк: </strong> {{ account.bank_name }}</div>
     <div><strong>Продукт: </strong> {{ account.stg.join(", ") }}</div>
     <div>
-      <!-- Перевести статусы -->
       <strong>Статус: </strong>
-      <span :class="getStatusClass">{{ account.meeting_state }} </span>
+      <span :class="getStatusClass">{{ states[account.meeting_state] }} </span>
     </div>
     <div>
       <strong>Дата: </strong>
@@ -22,7 +21,7 @@
 
 <script>
 import datetime from "@/mixins/datetime";
-
+import {STATES} from "@/constants"
 export default {
   props: {
     account: {
@@ -38,6 +37,7 @@ export default {
         upload_docs: "upload-status",
         reupload_fls: "reupload-status",
       },
+      states: STATES,
     };
   },
   mixins: [datetime],
@@ -64,7 +64,7 @@ export default {
   font-weight: 600;
 }
 .reupload-status {
-  color: aqua;
+  color: rgb(0, 183, 255);
   font-weight: 600;
 }
 </style>

@@ -2,7 +2,7 @@
 
 ## Project demo 
 
-https://mari-mishon.github.io/module-bank-application
+https://mari-mishon.github.io/module-bank-applications
 
 ## Примечания
 Есть три статических таба (Заявки, счета, создание новой заявки) и динамические табы с открытыми заявками.
